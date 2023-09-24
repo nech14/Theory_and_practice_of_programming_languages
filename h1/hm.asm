@@ -146,14 +146,14 @@ main:
     getLenMas lenx, 4, edi
 
     mov edx, 0    
-    negForIdiv esi, edi
+    ;negForIdiv esi, edi
     mov eax, esi
 
     mov ecx, edi    
     mov ebx, ecx
 
-    
-    idiv ebx
+    cdq
+    idiv ebx ; (¬_¬)
     mov esi, eax
 
     mov rdi, format1
@@ -180,21 +180,16 @@ end:
 
 
 section .data
-    format1 db "answer = %d", 0xA, 0xD
-    n1 dd 10
-    n2 dd 3
-    mas dd 1, 10, 100, 1000, 10000
     
-    lenMas equ $ - mas
-    
-    x dd 5, 3, 2, 6, 1, 7, 4
-    lenx equ $ - x
-
     y dd 0, 10, 1, 9, 2, 8, 5
+    x dd 5, 3, 2, 6, 1, 7, 4  
 
 
-    buf dd 10 dup (1)
 
-
-    format db "answer = %d + %d/%d", 0xA, 0xD
+    lenx equ $ - x
+    format1 db "answer = %d", 0xA, 0xD
+    mas dd 1, 10, 100, 1000, 10000    
+    lenMas equ $ - mas 
+    buf dd 100 dup (1)
+    format db "answer = %d + (%d/%d)", 0xA, 0xD
     
