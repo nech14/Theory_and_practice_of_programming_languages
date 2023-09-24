@@ -1,9 +1,9 @@
 CC = g++
 CFLAGS = -std=c++11 -Wall -pedantic
-SOURCES = hm.asm
+SOURCES = sqrl.asm
 
 OUT = a.out 
-TARGET = hm.o
+TARGET = sqrl.o
 
 
 all:
