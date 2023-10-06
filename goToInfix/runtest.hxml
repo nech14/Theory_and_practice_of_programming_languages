@@ -1,0 +1,3 @@
+-cmd haxelib install munit --always
+
+-cmd haxelib run munit test -coverage -result-exit-code

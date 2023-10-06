@@ -1,0 +1,2 @@
+@C:\haxe\main\src,,,
+C:/haxe/main/src/Infix.hx|2023-10-06 22:20:11|src.Infix|
