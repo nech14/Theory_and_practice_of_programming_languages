@@ -12,15 +12,15 @@ endif
 
 
 allpy:
-	haxe -main $(SOURCES) -python $(INPUT).py -p src 
+	haxe -main $(SOURCES) -python $(INPUT).py
 runpy: allpy
-	python $(INPUT).py 
+	python $(INPUT).py
 
 cleanpy:
 	$(RM) $(INPUT).py
 
-all:	
-	haxe -main $(SOURCES) -neko $(INPUT).n -p src
+all:
+	haxe -main $(SOURCES) -neko $(INPUT).n
 
 run: all
 	neko $(INPUT).n

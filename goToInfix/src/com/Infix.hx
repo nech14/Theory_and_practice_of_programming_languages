@@ -1,5 +1,4 @@
-
-package src;
+package com;
 import haxe.ds.GenericStack;
 
 

@@ -1,9 +1,9 @@
 
-package;
-import src.Infix;
+package ;
+import com.Infix;
 
 
-
+@IgnoreCover
 class Main {
   static public function main() {
     Sys.println("Enter the expression in prefix notation: ");
