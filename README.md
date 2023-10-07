@@ -3,8 +3,8 @@
 ### munit + mcover.
 ### First steep:
 Install Haxe from the official website.
-[![N|Solid](	https://haxe.org/img/haxe-logo.svg)]
-(https://haxe.org/download/)
+
+[![N|Solid](	https://haxe.org/img/haxe-logo.svg)](https://haxe.org/download/)
 
 ### Second steep:
 
