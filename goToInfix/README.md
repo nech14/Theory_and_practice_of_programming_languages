@@ -1,12 +1,12 @@
 # nech14-theory_and_practice_of_programming_languages-haxe
 ## Converting prefix notation to infix.
 ### munit + mcover.
-### First steep:
+### First step:
 Install Haxe from the official website.
 
 [![N|Solid](	https://haxe.org/img/haxe-logo.svg)](https://haxe.org/download/)
 
-### Second steep:
+### Second step:
 
 ##### Installing libraries:
 - haxelib install munit
@@ -18,7 +18,7 @@ Install Haxe from the official website.
 make i 
 ```
 
-### Third steep:
+### Third step:
 ##### Running tests
 ```cmd
 make htest
