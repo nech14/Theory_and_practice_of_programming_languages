@@ -41,7 +41,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/gitProgect/pyinterpreter&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python tests.pytest for test_parser.TestParser.test_invalid_token">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pyinterpreter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,11 +129,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python tests.pytest for test_parser.TestParser.test_invalid_token" />
         <item itemvalue="Python tests.pytest for test_ast.TestAst.testSignOpStr" />
         <item itemvalue="Python tests.pytest for test_ast.TestAst.testBinOpStr" />
         <item itemvalue="Python tests.pytest for test_ast.TestAst.testNumberStr" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
