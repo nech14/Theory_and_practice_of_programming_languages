@@ -52,5 +52,35 @@ class Lexer():
                 op = self._current_char
                 self.forward()
                 return Token(TokenType.RPAREN, op)
-            
-            raise SyntaxError("bad token")
+            if self._current_char == "B":
+                op = "" + self._current_char
+                for i in range(4):
+                    self.forward()
+                    if self._current_char is not None:
+                        op += self._current_char
+                if op == "BEGIN":
+                    return Token(TokenType.ANNOUNCERS, op)
+            if self._current_char == "E":
+                op = ""+self._current_char
+                for i in range(2):
+                    self.forward()
+                    if self._current_char is not None:
+                        op += self._current_char
+                if op == "END":
+                    return Token(TokenType.ANNOUNCERS, op)
+            if self._current_char == ":":
+                op = "" + self._current_char
+                self.forward()
+                if self._current_char is not None:
+                    op += self._current_char
+                    print('ggg', op)
+                    if op == ":=":
+                        return Token(TokenType.ASSING, op)
+            if self._current_char in [".", ";"]:
+                op = self._current_char
+                return Token(TokenType.DOTS, op)
+            if self._current_char is not None and self._current_char.isalpha():
+                op = self._current_char
+                return Token(TokenType.VARIABLE, op)
+
+            raise SyntaxError("bad token1")

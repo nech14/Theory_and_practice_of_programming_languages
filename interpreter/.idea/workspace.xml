@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2d29592-a0cb-48c9-8803-be8debeac5d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/test_ast.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interpreter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpreter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interpreter/ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpreter/ast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interpreter/interpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpreter/interpreter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interpreter/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpreter/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_interpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_interpreter.py" afterDir="false" />
-    </list>
+    <list default="true" id="f2d29592-a0cb-48c9-8803-be8debeac5d6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +15,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -38,7 +30,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/gitProgect/pyinterpreter&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/gitProgect/Theory_and_practice_of_programming_languages/interpreter&quot;
   }
 }</component>
   <component name="RunManager" selected="Python.main">
