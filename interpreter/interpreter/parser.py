@@ -1,6 +1,6 @@
 from .token import Token, TokenType
 from .lexer import Lexer
-from .ast import BinOp, Number, SignOp
+from .ast import BinOp, Number, SignOp, Empty, Assignment, Variable, LineOp
 
 
 class Parser:
@@ -9,6 +9,7 @@ class Parser:
         self._lexer = Lexer()
     
     def check_token(self, type_: TokenType):
+        #print(type_, self._current_token.type_, self._current_token.value)
         if self._current_token and self._current_token.type_ == type_:
             self._current_token = self._lexer.next()
         else:
@@ -27,6 +28,10 @@ class Parser:
         if token.type_ == TokenType.OPERATOR:
             self.check_token(TokenType.OPERATOR)
             return SignOp(token, self.factor())
+        if token.type_ == TokenType.ID:
+            result = self._current_token.value
+            self.check_token(TokenType.ID)
+            return Variable(result)
         raise SyntaxError("Invalid factor")
 
     def term(self):
@@ -36,23 +41,60 @@ class Parser:
                 break
             token = self._current_token
             self.check_token(TokenType.OPERATOR)
-            return BinOp(result, token, self.factor())            
+            return BinOp(result, token, self.term())
         return result
 
     def expr(self):
         result = self.term()
-        #print('ffff', self._current_token.type_, self._current_token.value)
         while self._current_token and (self._current_token.type_ == TokenType.OPERATOR):
-            #print('ffff12', self._current_token.type_)
-            if self._current_token.value not in ["+", "-"]:
-                break
             token = self._current_token
             self.check_token(TokenType.OPERATOR)
-            #print('hghgh', token.value, token.type_)
             result = BinOp(result, token, self.term())
+        return result
+
+    def assignment(self):
+        id = Variable(self._current_token.value)
+        self.check_token(TokenType.ID)
+        self.check_token(TokenType.ASSIGN)
+        return Assignment(id, self.expr())
+
+    def empty(self):
+        return Empty()
+
+    def statement(self):
+        match self._current_token.type_:
+            case TokenType.BEGIN:
+                return self.complex_statement()
+            case TokenType.ID:
+                return self.assignment()
+            case TokenType.END:
+                return self.empty()
+            case _:
+                raise SyntaxError("Invalid statement")
+
+    def statement_list(self):
+        result = self.statement()
+        if self._current_token and self._current_token.type_ == TokenType.END_LINE:
+            self._current_token = self._lexer.next()
+            #result = self.statement_list()
+            result = LineOp(result, self.statement_list())
+        return result
+
+    def complex_statement(self):
+        self.check_token(TokenType.BEGIN)
+        result = self.statement_list()
+        self.check_token(TokenType.END)
+        return result
+
+    def program(self):
+        result = self.complex_statement()
+        self.check_token(TokenType.DOT)
         return result
 
     def parse(self, code):
         self._lexer.init(code)
         self._current_token = self._lexer.next()
-        return self.expr()
+        print('ffgfg', self._current_token)
+        if self._current_token.type_ in [TokenType.NUMBER, TokenType.OPERATOR, TokenType.LPAREN]:
+            return self.expr()
+        return self.program()

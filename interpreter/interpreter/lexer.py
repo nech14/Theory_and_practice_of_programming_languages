@@ -25,7 +25,7 @@ class Lexer():
             self.forward()
 
     def number(self):
-        result  = []
+        result = []
         while (self._current_char is not None and 
                (self._current_char.isdigit() or
                 self._current_char == ".")):
@@ -52,35 +52,43 @@ class Lexer():
                 op = self._current_char
                 self.forward()
                 return Token(TokenType.RPAREN, op)
-            if self._current_char == "B":
+            if self._current_char == "B" and self._pos+5 <= len(self._text):
                 op = "" + self._current_char
                 for i in range(4):
                     self.forward()
                     if self._current_char is not None:
                         op += self._current_char
                 if op == "BEGIN":
-                    return Token(TokenType.ANNOUNCERS, op)
-            if self._current_char == "E":
+                    self.forward()
+                    return Token(TokenType.BEGIN, op)
+            if self._current_char == "E" and self._pos+3 <= len(self._text):
                 op = ""+self._current_char
                 for i in range(2):
                     self.forward()
                     if self._current_char is not None:
                         op += self._current_char
                 if op == "END":
-                    return Token(TokenType.ANNOUNCERS, op)
+                    self.forward()
+                    return Token(TokenType.END, op)
             if self._current_char == ":":
                 op = "" + self._current_char
                 self.forward()
                 if self._current_char is not None:
                     op += self._current_char
-                    print('ggg', op)
                     if op == ":=":
-                        return Token(TokenType.ASSING, op)
-            if self._current_char in [".", ";"]:
+                        self.forward()
+                        return Token(TokenType.ASSIGN, op)
+            if self._current_char == '.':
                 op = self._current_char
-                return Token(TokenType.DOTS, op)
+                self.forward()
+                return Token(TokenType.DOT, op)
+            if self._current_char == ';':
+                op = self._current_char
+                self.forward()
+                return Token(TokenType.END_LINE, op)
             if self._current_char is not None and self._current_char.isalpha():
                 op = self._current_char
-                return Token(TokenType.VARIABLE, op)
+                self.forward()
+                return Token(TokenType.ID, op)
 
-            raise SyntaxError("bad token1")
+            raise SyntaxError(f"bad token")

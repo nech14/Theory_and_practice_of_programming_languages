@@ -13,6 +13,7 @@ if __name__ == "__main__":
         try:
             result = interp.eval(text)
             print(f"out> {result}")
+            print(f"vars> {interp.variables}")
         except (SyntaxError, ValueError, TypeError) as e:
             print(f"{type(e).__name__}: {e}", file=sys.stderr)
     print("Done!")

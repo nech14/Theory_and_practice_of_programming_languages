@@ -7,10 +7,13 @@ class TokenType(Enum):
     EOL = auto()
     LPAREN = auto()
     RPAREN = auto()
-    ANNOUNCERS = auto()
-    DOTS = auto()
-    VARIABLE = auto()
-    ASSING = auto()
+
+    BEGIN = auto()
+    END = auto()
+    ID = auto()
+    ASSIGN = auto()
+    DOT = auto()
+    END_LINE = auto()
 
 
 class Token:
