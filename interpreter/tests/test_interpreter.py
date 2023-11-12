@@ -57,6 +57,39 @@ class TestInterpreter:
     def test_add_spaces(self, interpreter, code):
         assert interpreter.eval(code) == 4
 
+    @pytest.mark.parametrize(
+        "interpreter, answer, code", [(interpreter,
+                                       {}, """
+                                            BEGIN
+                                            END.
+                                            """),
+                                      (interpreter,
+                                       {'y': 1.0}, """
+                                                BEGIN
+                                                    y:= (2*2)/4
+                                                END.
+                                            """),
+                                      (interpreter,
+                                       {'y': 2.0, 'a': 3.0, 'b': 18.0, 'c': -15.0, 'x': 11.0},
+                                       """BEGIN y:= 2; 
+                                                    BEGIN 
+                                                        a := 3; 
+                                                        a := a; 
+                                                        b := 10 + a + 10 * y / 4; 
+                                                        c := a - b 
+                                                    END; 
+                                                    x := 11;
+                                                END.""")
+                                      ]
+    )
+    def test_pascal(self, interpreter, code, answer):
+        assert interpreter.get_vars(code) == answer
+
+    def test_invalid_statement(self, interpreter):
+        with pytest.raises(SyntaxError):
+            interpreter.parser._current_token = Token(TokenType.OPERATOR, '+')
+            interpreter.parser.statement()
+
     def test_visit_method(self):
         visitor = inter.NodeVisitor()
         result = visitor.visit()
