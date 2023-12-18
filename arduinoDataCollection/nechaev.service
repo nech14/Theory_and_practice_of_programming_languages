@@ -1,0 +1,16 @@
+[Unit]
+Description=Nechaev service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 nechaev.py
+WorkingDirectory=/home/user/mycode/
+Type=simple
+Restart=always
+RestartSec=10
+StandardOutput=null
+
+User=user
+
+[Install]
+WantedBy=multi-user.target
