@@ -1,0 +1,16 @@
+[Unit]
+Description=Ezhov service
+After=network.target
+
+[Service]
+ExecStart=python3 main.py
+WorkingDirectory=/home/user/ezhov/
+Type=simple
+Restart=always
+RestartSec=10
+StandardOutput=null
+
+User=user
+
+[Install]
+WantedBy=multi-user.target
